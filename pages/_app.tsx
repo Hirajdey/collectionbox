@@ -7,6 +7,7 @@ import 'nprogress/nprogress.css'
 import { useEffect } from 'react'
 import { AppContext } from '../app-context/AppContext'
 import { useSetAppContext } from '../hooks/useSetAppContext'
+import { CookiesProvider } from 'react-cookie'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -29,11 +30,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   },[router])
 
   return (
-    <AppContext.Provider value={context}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </AppContext.Provider>
+    <CookiesProvider>
+      <AppContext.Provider value={context}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AppContext.Provider>
+    </CookiesProvider>
     )
 }
 
