@@ -1,5 +1,6 @@
 
 import { ChangeEventHandler, FocusEventHandler, forwardRef } from 'react';
+import classnames from 'classnames';
 
 // Styles
 import Styles from './AppInput.module.scss'
@@ -36,10 +37,21 @@ const AppInput = forwardRef(<T extends string | number | readonly string[] | und
     labelClassname
 }:AppInputProps<T>) => {
   return (
-    <div className={Styles.inputWrapper}> 
-        <div className={Styles.inputBox}>
-            <input type="text" />
+    <div className={classnames(Styles.inputWrapper, inputWrapperClassname)}>
+        {labelText && <label className={classnames(Styles.label, labelClassname)}>{labelText}</label>} 
+        <div className={classnames(Styles.inputBox, inputBoxClassname)}>
+            <input 
+                type={type} 
+                name={name} 
+                required={isRequired} 
+                value={value}
+                onChange={onChange}
+                onBlur={onBlur}
+                onFocus={onFocus}
+                className={classnames(Styles.input, inputClassname)}
+            />
         </div>
+        {error && <span className={Styles.error}>{error}</span>}
     </div> 
   )
 });
