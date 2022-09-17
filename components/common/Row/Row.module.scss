@@ -1,0 +1,13 @@
+.main{  
+    display: flex;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+// Large Devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .main{
+        flex-direction: row;
+    }
+}
+
