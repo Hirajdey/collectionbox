@@ -1,8 +1,20 @@
-import Layout from "../Layout/Layout"
+// Styles
+import Styles from './Register.module.scss'
+
+// Components
+import Container from '../common/Container/Container'
+
 
 const Register = () => {
   return (
-    <div>Register</div>
+    <main className={Styles.main}>
+        <section>
+          <Container>
+            <h2> Register Form</h2>
+          
+          </Container>
+        </section>
+    </main>
   )
 }
 
