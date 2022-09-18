@@ -3,6 +3,7 @@ import Styles from './Register.module.scss'
 
 // Components
 import Container from '../common/Container/Container'
+import RegisterForm from '../common/forms/register-form/RegisterForm'
 
 
 const Register = () => {
@@ -10,8 +11,8 @@ const Register = () => {
     <main className={Styles.main}>
         <section>
           <Container>
-            <h2> Register Form</h2>
-          
+            <h2>Register Form</h2>
+            <RegisterForm/>
           </Container>
         </section>
     </main>

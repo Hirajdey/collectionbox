@@ -1,0 +1,31 @@
+.main{ 
+    background-color: orange;
+    border: solid 1px orange;
+    padding:5px 10px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 20px;
+    &.full{
+        background-color: orange;
+        color: #fff;
+    }
+    &.outline{
+        background:none;
+        color: orange;
+    }
+
+    &.link{
+        border: none;
+        background: none;
+        padding: 5px;
+        color: blue;
+        text-decoration: underline;
+    }
+    &.disabled{
+        border-color: lightgray;
+        color: lightgray;
+        cursor:not-allowed
+    }
+}
