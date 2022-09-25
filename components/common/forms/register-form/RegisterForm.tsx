@@ -11,7 +11,11 @@ import { validationSchemaRegisterForm } from '../formsValidationSchema';
 import { registerFormProps } from '../formTypes';
 
 // Styles
-import Styles from './RegisterForm.module.scss'
+import Styles from './RegisterForm.module.scss';
+
+// Services
+import AuthService from '../../../../_services/auth.service';
+
 
 // Components
 import AppInput from '../../app-input/AppInput';
@@ -21,11 +25,10 @@ const RegisterForm = () => {
     const [formik, setFormik] = useState<FormikProps<registerFormProps>>();
     
     const onSubmit = (values:any, submitProps: any) => {
+        const {name, email, password } = values;
+        
         // call register API    
-        console.log(values.name);
-        console.log(values.email);
-        console.log(values.password)
-
+        AuthService.userRegister({name, email, password});
         submitProps.setSubmitting(false)
         submitProps.resetForm()     
     }
