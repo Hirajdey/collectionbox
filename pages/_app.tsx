@@ -3,6 +3,8 @@ import type { AppProps } from 'next/app'
 import Layout from '../components/Layout/Layout'
 import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'nprogress/nprogress.css'
 import { useEffect } from 'react'
 import { AppContext } from '../app-context/AppContext'
@@ -34,6 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <AppContext.Provider value={context}>
         <Layout>
           <Component {...pageProps} />
+          <ToastContainer position="bottom-left"/>
         </Layout>
       </AppContext.Provider>
     </CookiesProvider>

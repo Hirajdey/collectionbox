@@ -92,7 +92,7 @@ const RegisterForm = () => {
                     btnStyleType="outline"
                     disabled={!(formik.isValid && formik.dirty)} 
                 >
-                    Sign Up
+                   Sign Up 
                 </AppBtn>
                 </Form>
             )}

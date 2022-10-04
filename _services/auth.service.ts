@@ -1,4 +1,5 @@
 import API from "./const";
+import { toast } from 'react-toastify';
 
 interface UserRegisterProps {
   name: string;
@@ -20,14 +21,13 @@ async function userRegister({name, email, password}:UserRegisterProps){
       })
     })); 
 
-    console.log("ReQUEST Status", request.status);
-    
-    // if(request.status){
-
-    // }
+    if(request.status === 200){
+      const response = await request.json();
+      toast.success(`${response.message}`);
+    }
 
   } catch(error){
-    console.log("AUTH SERVICE ERROR", error)
+    toast.error(`${error}`);
   }
 
   return null;
