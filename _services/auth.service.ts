@@ -1,6 +1,5 @@
-import API from "./const";
+import APIS from "./const";
 import { toast } from 'react-toastify';
-
 interface UserRegisterProps {
   name: string;
   email: string;
@@ -9,7 +8,7 @@ interface UserRegisterProps {
 
 async function userRegister({name, email, password}:UserRegisterProps){
   try {
-    const request = await fetch(new Request(API.USER_REGISTER, {
+    const request = await fetch(new Request(APIS.USER_REGISTER, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -24,10 +23,43 @@ async function userRegister({name, email, password}:UserRegisterProps){
     if(request.status === 200){
       const response = await request.json();
       toast.success(`${response.message}`);
+    }else{
+      const response = await request.json();
+      toast.error(`${response.error}`);
     }
 
   } catch(error){
-    toast.error(`${error}`);
+    toast.error('An error occured, please try again after sometime');
+  }
+
+  return null;
+}
+
+interface UserActivationProps {
+  token: string;
+}
+
+async function userActivation({token}: UserActivationProps) { 
+  try{
+    const request = await fetch(new Request(APIS.USER_ACTIVATION, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          token
+        })
+    }));
+
+    if(request.status === 200){
+      const response = await request.json();
+      toast.success(`${response.message}`);
+    }else{
+      const response = await request.json();
+      toast.error(`${response.error}`);
+    }
+  } catch(error){
+    toast.error('An error occured, please try again after sometime');
   }
 
   return null;
@@ -35,6 +67,7 @@ async function userRegister({name, email, password}:UserRegisterProps){
 
 const AuthService = {
   userRegister,
+  userActivation
 } 
 
 export default AuthService;

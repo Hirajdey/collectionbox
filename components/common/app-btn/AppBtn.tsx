@@ -6,15 +6,16 @@ import Styles from './AppBtn.module.scss'
 
 interface AppBtnProps { 
     children: ReactNode;
-    type: "submit" | "reset";
+    type?: "submit" | "reset";
     btnStyleType: "outline" | "full" | "link";
     btnClassnames?: string;
     disabled?: boolean;
+    onClickBtn?: () => void;
 }
 
-export const AppBtn = ({children, type, btnStyleType, btnClassnames, disabled = false }:AppBtnProps) => {
+export const AppBtn = ({onClickBtn, children, type, btnStyleType, btnClassnames, disabled = false }:AppBtnProps) => {
   return (
-    <button disabled={disabled} type={type} className={classNames(Styles.main, Styles[btnStyleType] ,btnClassnames, disabled ? Styles.disabled : "")}>{children}</button>
+    <button onClick={onClickBtn} disabled={disabled} type={type} className={classNames(Styles.main, Styles[btnStyleType] ,btnClassnames, disabled ? Styles.disabled : "")}>{children}</button>
   )
 }
 

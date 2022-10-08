@@ -1,15 +1,13 @@
+import { API } from '../config';
 
-const DEV_URL = "";
-const PROD_URL = "";
+const USER_REGISTER = API + "/register";
+const USER_ACTIVATION = API + "/register/activate";
 
-const API_URL = "http://localhost:8000/api";
-
-const USER_REGISTER = API_URL + "/register";
-
-const API = {
-    USER_REGISTER
+const APIS = {
+    USER_REGISTER,
+    USER_ACTIVATION
 }
 
-export default API;
+export default APIS;
 
 
