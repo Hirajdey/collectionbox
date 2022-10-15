@@ -16,24 +16,30 @@ import { AppBtn } from "../../app-btn/AppBtn";
 import { initialValuesLoginForm } from "../formsInitialValues";
 import { validationSchemaLoginForm } from "../formsValidationSchema";
 import { AppContext } from "../../../../app-context/AppContext";
-import { COOKIES, COOKIES_PATH } from "../../../../constants";
-import { useCookies } from "react-cookie";
+import { authenticate } from "../../../../methods/auth";
+import { useRouter } from "next/router";
+import { ROUTE } from "../../../../constants/routeString";
 
 const LoginForm = () => {
   const [formik, setFormik] = useState<FormikProps<loginFormProps>>();
   const { setUserName, setUserEmail, setUserId, setUserRole } = useContext(AppContext);
-  const [cookies, setCookie] = useCookies<string>([COOKIES.tooken]);
-  
+
+  const route = useRouter();
+
 	const onSubmit = (values: any, submitProps: any) => {
 		const { email, password } = values;
 		// call login API
 	  const userData = authService.userLogin({email, password});
 		userData.then((data) => {
-      setCookie(COOKIES.tooken, data?.token , COOKIES_PATH.index);
-      setUserName?.(data?.user.name);
-      setUserEmail?.(data?.user.email);
-      setUserId?.(data?.user._id);
-      setUserRole?.(data?.user.role);      
+      if(data){
+        setUserName?.(data?.user.name);
+        setUserEmail?.(data?.user.email);
+        setUserId?.(data?.user._id);
+        setUserRole?.(data?.user.role);
+        authenticate(data.token, () => {
+          route.push(ROUTE.home.getUrl())
+        })
+      }    
 		})
 		
 		submitProps.setSubmitting(false)

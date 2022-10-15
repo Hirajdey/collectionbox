@@ -7,5 +7,5 @@ export const COOKIES = {
 }
 
 export const COOKIES_PATH = {
-    index : {path: '/'}
+    index : { expires: 1, path: '/'}
 }

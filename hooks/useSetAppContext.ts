@@ -1,41 +1,39 @@
 import { useEffect, useState } from 'react'
-import { useCookies } from 'react-cookie';
+import Cookies from 'js-cookie'
 import { COOKIES, COOKIES_PATH } from '../constants';
 import { getInitialContext } from '../methods/getInitialContext'
-import { getKeyValueFromObj } from '../methods/getKeyValueFromObj';
 import { AppContextType } from '../types'
 
 export const useSetAppContext = () => {
     const [context, setContext] = useState<AppContextType>(getInitialContext())
-    const [cookies, setCookie, removeCookie] = useCookies<string>(getKeyValueFromObj(COOKIES).values);
-    
+
     useEffect(() => {
         setContext((intlState) => ({
             ...intlState,
-            userName:cookies[COOKIES.name],
+            userName:Cookies.get(COOKIES.name),
             setUserName: (userName) => {
                 if(userName){
-                    setCookie(COOKIES.name, userName, COOKIES_PATH.index);
+                    Cookies.set(COOKIES.name, userName, COOKIES_PATH.index);
                 }else{
-                    removeCookie(COOKIES.name, COOKIES_PATH.index);
+                    Cookies.remove(COOKIES.name);
                 }
                 setContext((state) => ({...state, userName}))
             },
-            userId: cookies[COOKIES.userid],
+            userId: Cookies.get(COOKIES.userid),
             setUserId: (userId) => {
                 if(userId){
-                    setCookie(COOKIES.userid, userId, COOKIES_PATH.index);
+                    Cookies.set(COOKIES.userid, userId, COOKIES_PATH.index);
                 }else{
-                    removeCookie(COOKIES.userid, COOKIES_PATH.index);
+                    Cookies.remove(COOKIES.userid);
                 }
                 setContext((state) => ({...state, userId}))
             },
-            userEmail: cookies[COOKIES.email],
+            userEmail: Cookies.get(COOKIES.email),
             setUserEmail: (userEmail) => {
                 if(userEmail){
-                    setCookie(COOKIES.email, userEmail, COOKIES_PATH.index);
+                    Cookies.set(COOKIES.email, userEmail, COOKIES_PATH.index);
                 }else{
-                    removeCookie(COOKIES.email, COOKIES_PATH.index)
+                    Cookies.remove(COOKIES.email)
                 }
                 setContext((state) => ({...state, userEmail}))
             },
@@ -44,13 +42,13 @@ export const useSetAppContext = () => {
                     setContext((state)=> ({...state, userPhone}))
                 }
             },
-            userRole: cookies[COOKIES.role],
+            userRole: Cookies.get(COOKIES.role),
             setUserRole: (userRole) => {
                 if(userRole){
-                    setCookie(COOKIES.role, userRole, COOKIES_PATH.index)
+                    Cookies.set(COOKIES.role, userRole, COOKIES_PATH.index)
                     setContext((state)=> ({...state, userRole}))
                 }else{
-                    removeCookie(COOKIES.role, COOKIES_PATH.index)
+                    Cookies.remove(COOKIES.role)
                 }
             }
         }))
