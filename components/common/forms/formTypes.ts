@@ -3,3 +3,9 @@ export interface registerFormProps {
     email: string;
     password: string | number
 }
+export interface loginFormProps {
+    email: string;
+    password: string | number
+}
+
+

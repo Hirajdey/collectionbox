@@ -8,5 +8,13 @@ export interface AppContextType {
     setUserPhone?: (userPhone:string) => void;
     userEmail?: string;
     setUserEmail?: (userEmail: string) => void; 
+    userRole?: string;
+    setUserRole?: (userRole : string) => void;
 }
-
+// export interface setCookiesType{
+//     name: string;
+//     email: string;
+//     role: string;
+//     token: string;
+//     userid: string;
+// }

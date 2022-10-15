@@ -2,10 +2,11 @@ import { AppContextType } from "../types"
 
 export const getInitialContext = () => {
     const initialContext: AppContextType = {
-        userName: "HirajDey",
-        userId: "",
-        userPhone: "",
-        userEmail: ""
+        userName: '',
+        userId: '',
+        userPhone: '',
+        userEmail: '',
+        userRole: ''
     }
     return initialContext;
 }

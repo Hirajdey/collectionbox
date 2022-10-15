@@ -14,8 +14,7 @@ import { registerFormProps } from '../formTypes';
 import Styles from './RegisterForm.module.scss';
 
 // Services
-import AuthService from '../../../../_services/auth.service';
-
+import authService from '../../../../_services/auth.service';
 
 // Components
 import AppInput from '../../app-input/AppInput';
@@ -28,7 +27,7 @@ const RegisterForm = () => {
         const {name, email, password } = values;
         
         // call register API    
-        AuthService.userRegister({name, email, password});
+        authService.userRegister({name, email, password});
         submitProps.setSubmitting(false)
         submitProps.resetForm()     
     }

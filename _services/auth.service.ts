@@ -65,9 +65,45 @@ async function userActivation({token}: UserActivationProps) {
   return null;
 }
 
-const AuthService = {
+interface UserLoginProps {
+  email: string;
+  password: string;
+}
+
+async function userLogin({email, password}:UserLoginProps) {
+  try {
+    const request = await fetch(new Request(APIS.USER_LOGIN, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    }));
+
+    const response = await request.json();
+
+    if(request.status === 200){
+      return {token: response.token, user: response.user};
+    }else{
+      toast.error(`${response.error}`);
+    }
+
+  } catch(error){
+    console.log('userlogin error',error);
+  }
+  
+  return null;
+}
+
+
+
+const authService = {
   userRegister,
-  userActivation
+  userActivation,
+  userLogin
 } 
 
-export default AuthService;
+export default authService;

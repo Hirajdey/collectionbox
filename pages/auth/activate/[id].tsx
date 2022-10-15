@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import jwt from 'jsonwebtoken'; 
 import Container from '../../../components/common/Container/Container';
 import { AppBtn } from '../../../components/common/app-btn/AppBtn';
-import AuthService from '../../../_services/auth.service';
+import authService from '../../../_services/auth.service';
 
 const ActivateAccount = () => {
     const router = useRouter();
@@ -20,7 +20,7 @@ const ActivateAccount = () => {
     }, [router, token]);
 
     const onClickHandleActivation = () => {
-        AuthService.userActivation({token})
+        authService.userActivation({token})
     }    
 
     return (

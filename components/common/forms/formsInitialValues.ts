@@ -1,4 +1,4 @@
-import { registerFormProps } from "./formTypes";
+import { loginFormProps, registerFormProps } from "./formTypes";
 
 export const initialValuesRegistrForm: registerFormProps = {
     name: "",
@@ -6,3 +6,7 @@ export const initialValuesRegistrForm: registerFormProps = {
     password: ""
 }
 
+export const initialValuesLoginForm: loginFormProps = {
+    email: "",
+    password: ""
+}
