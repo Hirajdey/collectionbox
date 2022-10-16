@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Form, Formik, FormikProps } from "formik";
 
 // Styles
@@ -18,12 +18,12 @@ import { validationSchemaLoginForm } from "../formsValidationSchema";
 import { AppContext } from "../../../../app-context/AppContext";
 import { authenticate } from "../../../../methods/auth";
 import { useRouter } from "next/router";
-import { ROUTE } from "../../../../constants/routeString";
+import { roleBasedRoute } from "../../../../methods/routeControl";
 
 const LoginForm = () => {
   const [formik, setFormik] = useState<FormikProps<loginFormProps>>();
   const { setUserName, setUserEmail, setUserId, setUserRole } = useContext(AppContext);
-
+  
   const route = useRouter();
 
 	const onSubmit = (values: any, submitProps: any) => {
@@ -36,8 +36,8 @@ const LoginForm = () => {
         setUserEmail?.(data?.user.email);
         setUserId?.(data?.user._id);
         setUserRole?.(data?.user.role);
-        authenticate(data.token, () => {
-          route.push(ROUTE.home.getUrl())
+        authenticate(data?.token, () => {
+          roleBasedRoute(data?.user.role, route);
         })
       }    
 		})

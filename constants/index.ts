@@ -9,3 +9,7 @@ export const COOKIES = {
 export const COOKIES_PATH = {
     index : { expires: 1, path: '/'}
 }
+
+export const ROLES = {
+    admin: "admin"
+}
