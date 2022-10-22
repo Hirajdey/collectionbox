@@ -13,5 +13,11 @@
             font-weight: bold;
             text-decoration: none;
         }
+        &.loginRegisterHide{
+            display: none;
+        }
+        &.logoutHide{
+            display: none;
+        }
     }
 }

@@ -10,5 +10,9 @@ export const NavMenuConstant = [
     {
         label: "Register",
         url: "/register"
+    },
+    {
+        label: "Logout",
+        url: ""
     }
 ]

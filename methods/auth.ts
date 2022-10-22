@@ -9,7 +9,7 @@ export const setCokkie = (key:string, value:string) => {
 }
 
 // remove from cookie
-export const removeCokkie = (key:string) => {
+export const removeCookie = (key:string) => {
     if(typeof window !== 'undefined'){
         Cookies.remove(key)
     }
@@ -29,3 +29,10 @@ export const authenticate = (response: string, next: () => void) => {
     next();
 }
 
+export const handleLogout = () => {
+    removeCookie(COOKIES.tooken);
+    removeCookie(COOKIES.userid);
+    removeCookie(COOKIES.role);
+    removeCookie(COOKIES.email);
+    removeCookie(COOKIES.name);
+}
