@@ -18,7 +18,7 @@ export interface NavDataTypes {
 }
 
 const Header = () => {
-	const { userId } = useContext(AppContext);
+	const { userId, setUserId, setUserName, setUserRole, setUserEmail } = useContext(AppContext);
 	const [navState, setNavState] = useState<NavDataTypes[]>([]);
 
 	const handleNavRender = () => {
@@ -38,8 +38,10 @@ const Header = () => {
 	const onClickHandleNav = (label:string) => {
 		if(label.toLowerCase() === "logout"){
 				handleLogout();
-				const logOutNavData = NavMenuConstant.filter((data) => data.label.toLowerCase() !== "logout");
-				setNavState(logOutNavData);
+				setUserId?.('');
+				setUserName?.('');
+				setUserRole?.('');
+				setUserEmail?.('');
 		}    
 	}
 

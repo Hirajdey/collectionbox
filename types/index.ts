@@ -12,3 +12,11 @@ export interface AppContextType {
     setUserRole?: (userRole : string) => void;
 }
 
+export enum NAVMENU {
+    HOME = "home",
+    LOGIN = "login",
+    REGISTER = "register",
+    LOGOUT = "logout",
+    ADMIN = "admin",
+    USER = "user"
+}

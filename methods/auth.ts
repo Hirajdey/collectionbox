@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 // set in cookie
 export const setCokkie = (key:string, value:string) => {    
     if(typeof window !== 'undefined'){
-        Cookies.set(key, value, COOKIES_PATH.index)
+        Cookies.set(key, value)
     }
 }
 

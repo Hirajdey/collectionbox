@@ -11,5 +11,6 @@ export const COOKIES_PATH = {
 }
 
 export const ROLES = {
-    admin: "admin"
+    admin: "admin",
+    user: "user"
 }

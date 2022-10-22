@@ -22,7 +22,7 @@ export const routeControl = (role:string | undefined, route:NextRouter) => {
         route.push(ROUTE.login.withParam)
     }
 
-    if((role === ROLES.admin) && !route.asPath.includes(ROUTE.admin.withParam)){
+    if((role === ROLES.admin) && route.asPath.includes(ROUTE.user.withParam)){
         roleBasedRoute(role, route)
     }
 
