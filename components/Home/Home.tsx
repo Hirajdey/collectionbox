@@ -10,11 +10,11 @@ const Home = () => {
   const route = useRouter();
   const token = getCookie(COOKIES.tooken);
 
-  useEffect(() => {
-    if(!token){
-      route.push(ROUTE.login.withParam);
-    }  
-  },[route])
+  // useEffect(() => {
+  //   if(!token){
+  //     route.push(ROUTE.login.withParam);
+  //   }  
+  // },[route])
 
   return (
     <div>Home - {userName} <button>UpdateName</button></div>

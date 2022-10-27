@@ -17,10 +17,28 @@ export const removeCookie = (key:string) => {
 
 // get from cookie such as stored token
 // it will be useful when we need to make request to server with auth token 
-export const getCookie = (key:string) => {
-    if(typeof window !== 'undefined'){
-        return Cookies.get(key)
+export const getCookie = (key:string, req?:any) => {
+   if(typeof window !== 'undefined'){
+      return getCookieFromBrowser(key);
+   }else{
+      return getCookieFromServer(key, req);
+   }
+}
+
+export const getCookieFromBrowser = (key: string) => {
+    return Cookies.get(key)
+}
+
+export const getCookieFromServer = (key: string, req:any) => {
+    if(!req?.headers.cookie){
+        return undefined;
     }
+    let token = req.headers.cookie.split(';').find((t:any) => t.trim().startsWith(`${key}=`));
+    if(!token) {
+        return undefined
+    }
+    let tokenValue = token.split('=')[1];
+    return tokenValue;
 }
 
 // authenticate user by passing data to cokie during signin

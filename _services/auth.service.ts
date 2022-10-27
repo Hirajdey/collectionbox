@@ -1,5 +1,6 @@
 import APIS from "./const";
 import { toast } from 'react-toastify';
+import axios from 'axios';
 interface UserRegisterProps {
   name: string;
   email: string;
@@ -97,8 +98,6 @@ async function userLogin({email, password}:UserLoginProps) {
   
   return null;
 }
-
-
 
 const authService = {
   userRegister,

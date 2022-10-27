@@ -17,7 +17,7 @@ const Nav = ({onClickHandleNav, data}:NavProps) => {
   return (
     <ul className={Styles.ul}>
         {data.map(menu => (
-          <li className={Styles.navItem} onClick={() => onClickHandleNav(menu.label)}> 
+          <li key={menu.label} className={Styles.navItem} onClick={() => onClickHandleNav(menu.label)}> 
             <Link className={Styles.navLink} href={menu.url}>
               {menu.label}
             </Link>

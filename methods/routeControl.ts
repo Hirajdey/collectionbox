@@ -15,20 +15,20 @@ export const routeControl = (role:string | undefined, route:NextRouter) => {
     const token = getCookie(COOKIES.tooken);
 
     if((token !== undefined) && (route.asPath.includes(ROUTE.login.withParam) || route.asPath.includes(ROUTE.register.withParam)) ){
-        roleBasedRoute(role, route)
+        route.push(ROUTE.home.withParam)
     }
 
-    if((token === undefined) && (route.asPath.includes(ROUTE.user.withParam) || route.asPath.includes(ROUTE.admin.withParam))){
-        route.push(ROUTE.login.withParam)
-    }
+    // if((token === undefined) && (route.asPath.includes(ROUTE.user.withParam) || route.asPath.includes(ROUTE.admin.withParam))){
+    //     route.push(ROUTE.login.withParam)
+    // }
 
-    if((role === ROLES.admin) && route.asPath.includes(ROUTE.user.withParam)){
-        roleBasedRoute(role, route)
-    }
+    // if((role === ROLES.admin) && route.asPath.includes(ROUTE.user.withParam)){
+    //     roleBasedRoute(role, route)
+    // }
 
-    if(role !== ROLES.admin && route.asPath.includes(ROUTE.admin.withParam)){
-        roleBasedRoute(role, route)
-    }
+    // if(role !== ROLES.admin && route.asPath.includes(ROUTE.admin.withParam)){
+    //     roleBasedRoute(role, route)
+    // }
 }
 
 
