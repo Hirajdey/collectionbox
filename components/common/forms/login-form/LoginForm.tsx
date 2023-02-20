@@ -19,6 +19,8 @@ import { AppContext } from "../../../../app-context/AppContext";
 import { authenticate } from "../../../../methods/auth";
 import { useRouter } from "next/router";
 import { roleBasedRoute } from "../../../../methods/routeControl";
+import Link from "next/link";
+import { ROUTE } from "../../../../constants/routeString";
 
 const LoginForm = () => {
   const [formik, setFormik] = useState<FormikProps<loginFormProps>>();
@@ -95,6 +97,7 @@ const LoginForm = () => {
             >
               Sign In
             </AppBtn>
+            <Link href={ROUTE.forgotPassword.getUrl()}><a className={Styles.forgotLink}>Forgot Password</a></Link>
           </Form>
         )}
       </Formik>

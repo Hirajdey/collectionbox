@@ -18,5 +18,9 @@ export const ROUTE = {
     user: {
         withParam: "/user",
         getUrl: () => "/user"
+    },
+    forgotPassword: {
+        withParam: "/auth/password/forgot",
+        getUrl: () => "/auth/password/forgot"
     }
 }

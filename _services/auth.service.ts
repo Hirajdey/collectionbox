@@ -99,10 +99,46 @@ async function userLogin({email, password}:UserLoginProps) {
   return null;
 }
 
+interface userForgotPasswordRequestProps{
+  email: string;
+}
+
+async function userForgotPasswordRequest({email}:userForgotPasswordRequestProps) {
+  try{
+    const response = await axios.put(`${APIS.USER_FORGOT_PASSWORD}`, {email});
+    if(response.status === 200){
+      toast.success(response.data.message);
+    }
+  }catch(error:any){
+    if(error.response.status === 400){
+      toast.error(error.response.data.error);
+    }
+  }
+}
+
+interface userResetPasswordProps{
+  token: any;
+  password: string;
+}
+async function userResetPassword({token, password}:userResetPasswordProps){
+  try{
+    const response = await axios.put(`${APIS.USER_RESET_PASSWORD}`, {resetPasswordLink:token, newPassword:password});
+    if(response.status === 200){
+      toast.success(response.data.message);
+    }
+  }catch(error:any){
+    if(error.response.status === 400){
+      toast.error(error.response.data.error)
+    }
+  }
+}
+
 const authService = {
   userRegister,
   userActivation,
-  userLogin
-} 
+  userLogin,
+  userForgotPasswordRequest,
+  userResetPassword
+}
 
 export default authService;

@@ -13,5 +13,10 @@ export const validationSchemaLoginForm = Yup.object({
     password: Yup.string().required('Required password').min(8, 'Should be 8 chars minimum.').matches(passwordRegx, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character.')
 })
 
+export const validationSchemaForgotPasswordForm = Yup.object({
+    email: Yup.string().required('Required email').email('Invalid email format')
+})
 
-
+export const validationSchemaResetPasswordForm = Yup.object({
+    password: Yup.string().required('Required password').min(8, 'Should be 8 chars minimum.').matches(passwordRegx, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character.')
+})

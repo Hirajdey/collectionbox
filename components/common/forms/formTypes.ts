@@ -8,4 +8,10 @@ export interface loginFormProps {
     password: string | number
 }
 
+export interface forgotPasswordFormProps {
+    email: string;
+}
 
+export interface resetPasswordFormProps {
+    password: string | number
+}
